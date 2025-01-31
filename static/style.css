@@ -694,10 +694,11 @@ main .info .open-div :hover {
   max-width: 1280px;
   background-color: #1a1a1a;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   font-size: 1rem;
   color: #f6f6f6;
   font-weight: 700;
+  text-align: center;
 }
 
 .movie-container {
@@ -734,7 +735,8 @@ main .info .open-div :hover {
 
 @media screen and (min-width: 500px) {
   .movie-headline {
-    font-size: 1.3rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
   }
   .movie-container {
     grid-template-columns: repeat(3, 1fr);

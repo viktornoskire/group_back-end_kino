@@ -53,11 +53,7 @@ block content
                                 p.open-times-date= date.datum
                                 p.open-times-time= date.tid
                 img(src="./img/kinoImg.png" alt="Image with kino logo" class="kino-img")
-        h3.movie-headline Visas nu på KINO Sandviken
+        h3.movie-headline Våra populäraste filmer
         .movie-container
-            each movie in movies 
-                .movie-card
-                    a(href=`/movies/${movie.id}`)  
-                        img(src=movie.image.url, alt=movie.title)
-                    a(href=`/movies/${movie.id}`)
-                        h2= movie.title
+
+        script(type="module" src="../static/fetchTop5Movies.js")

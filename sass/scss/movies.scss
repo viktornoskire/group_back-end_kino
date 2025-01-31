@@ -4,10 +4,11 @@
   max-width: 1280px;
   background-color: $background-color;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   font-size: 1rem;
   color: $text-color-main;
   font-weight: 700;
+  text-align: center;
 }
 .movie-container {
   max-width: 1280px;
@@ -27,7 +28,7 @@
       border-radius: 10px;
     }
     a {
-     font-size: 1rem;
+      font-size: 1rem;
       font-weight: 400;
       margin: 0;
       color: inherit;
@@ -35,7 +36,7 @@
 
       &:hover {
         cursor: pointer;
-      } 
+      }
     }
     p {
       font-size: 0.8rem;
@@ -46,7 +47,8 @@
 
 @media screen and (min-width: 500px) {
   .movie-headline {
-    font-size: 1.3rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
   }
   .movie-container {
     grid-template-columns: repeat(3, 1fr);

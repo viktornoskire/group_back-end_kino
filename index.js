@@ -1,12 +1,12 @@
-import { loadMovie, loadMovies, loadReview } from './src/movies.js';
-import initialize from "./src/app.js";
+import { loadMovie, loadMovies, loadReviews } from './src/movies.js';
+import initialize from './src/app.js';
 
 const myAPI = {
   loadMovie,
   loadMovies,
-  loadReview
-}
+  loadReviews,
+};
 
-const app = initialize(myAPI)
+const app = initialize(myAPI);
 
 app.listen(5080);
