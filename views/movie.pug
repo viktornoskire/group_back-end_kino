@@ -29,6 +29,10 @@ block content
             input(type="text", placeholder="Namn...").name-input
             button(type="submit").review-btn Skicka
         article.review-article Hej!
-            script(type="module" src="../static/reviews.js")
+        section.screeningsID-container 
+            h3.screeningsID-title Kommande visningar av #{movie.title}
+            ul.screeningsID-list
+        script(type="module" src="../static/reviews.js")
+            
 
     
