@@ -139,19 +139,55 @@ suForm.addEventListener('submit', (e) => {
   liForm.querySelector('.wrongC').style.display = 'none';
   liForm.querySelector('.correctC').style.display = 'none';
 
+  const fName = suForm.querySelector('#su-fname').value;
+  const lName = suForm.querySelector('#su-lname').value;
   const un = suForm.querySelector('#su-username').value;
+  const em = suForm.querySelector('#su-mail').value;
   const pw = suForm.querySelector('#su-password').value;
+  const cpw = suForm.querySelector('#su-c-password').value;
+  const splitMail = em.split('@');
+
+  if (
+    fName.trim() === '' ||
+    lName.trim() === '' ||
+    un.trim() === '' ||
+    em.trim() === '' ||
+    pw.trim() === '' ||
+    cpw.trim() === ''
+  ) {
+    liForm.querySelector('.wrongC').style.display = '';
+    return;
+  }
+
+  if (splitMail[0] === '' || splitMail[1].toLowerCase() !== 'gmail.com') {
+    liForm.querySelector('.wrongC').style.display = '';
+    return;
+  }
+
+  if (pw.trim() !== cpw.trim()) {
+    liForm.querySelector('.wrongC').style.display = '';
+    return;
+  }
+
+  if (users.some((user) => user.username === un)) {
+    liForm.querySelector('.wrongC').style.display = '';
+    liForm.querySelector('.wrongC').textContent = 'Username already taken';
+    liForm.querySelector('.correctC').style.display = 'none';
+    return;
+  }
 
   const user = { username: un, password: pw };
   users.push(user);
 
   localStorage.setItem('users', JSON.stringify(users));
 
+  suForm.querySelector('#su-fname').value = '';
+  suForm.querySelector('#su-lname').value = '';
   suForm.querySelector('#su-username').value = '';
+  suForm.querySelector('#su-mail').value = '';
   suForm.querySelector('#su-password').value = '';
+  suForm.querySelector('#su-c-password').value = '';
 });
-
-users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
 liForm.addEventListener('submit', (e) => {
   e.preventDefault();

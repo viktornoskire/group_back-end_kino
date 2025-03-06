@@ -1095,5 +1095,11 @@ body .kino-img {
   margin-left: auto;
   margin-right: auto;
 }
+body .info-info-info {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
 
 /*# sourceMappingURL=style.css.map */

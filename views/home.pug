@@ -8,12 +8,24 @@ block content
         form(action="" class="signup-form")
             h2 Sign up
             .info-info-info
-                input(type="text" placeholder="förnamn..." id="su-fname")
-                input(type="text" placeholder="efternamn..." id="su-lname")
-                input(type="text" placeholder="användarnamn..." id="su-username")
-                input(type="text" placeholder="E-postadress..." id="su-mail")
-                input(type="password" placeholder="lösenord..." id="su-password")
-                input(type="password" placeholder="bekräfta lösenord..." id="su-c-password")
+                .fname 
+                    label(for="su-fname").label Förnamn
+                    input(type="text" placeholder="förnamn..." id="su-fname")
+                .lname
+                    label(for="su-lname").label Efternamn
+                    input(type="text" placeholder="efternamn..." id="su-lname")
+                .username
+                    label(for="su-username").label Användarnamn
+                    input(type="text" placeholder="användarnamn..." id="su-username")
+                .mail
+                    label(for="su-mail").label E-postadress
+                    input(type="text" placeholder="E-postadress..." id="su-mail")
+                .password
+                    label(for="su-password").label Lösenord
+                    input(type="password" placeholder="lösenord..." id="su-password")
+                .c-password
+                    label(for="su-c-password").label Bekräfta lösenord
+                    input(type="password" placeholder="bekräfta lösenord..." id="su-c-password")
             button(type="submit") Submit
         form(action="" class="login-form")
             h2 Login
