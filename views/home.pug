@@ -5,6 +5,23 @@ block title
 
 block content 
     main 
+        form(action="" class="signup-form")
+            h2 Sign up
+            .info-info-info
+                input(type="text" placeholder="förnamn..." id="su-fname")
+                input(type="text" placeholder="efternamn..." id="su-lname")
+                input(type="text" placeholder="användarnamn..." id="su-username")
+                input(type="text" placeholder="E-postadress..." id="su-mail")
+                input(type="password" placeholder="lösenord..." id="su-password")
+                input(type="password" placeholder="bekräfta lösenord..." id="su-c-password")
+            button(type="submit") Submit
+        form(action="" class="login-form")
+            h2 Login
+            input(type="text" placeholder="username..." id="li-username")
+            input(type="password" placeholder="password..." id="li-password")
+            button(type="submit") Submit 
+            p.wrongC(style="display: none") Wrong Credentials
+            p.correctC(style="display: none") Correct Credentials
         .info 
             .info1 
                 h1.cinema-title Kino Sandviken

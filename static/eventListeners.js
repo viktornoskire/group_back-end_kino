@@ -118,8 +118,8 @@ if (document.querySelector('.movie-title')) {
         }
       }
     } catch (error) {
-      errorText.innerText = "Inkorrekt inloggning";
-      errorText.style.display = "inline";
+      errorText.innerText = 'Inkorrekt inloggning';
+      errorText.style.display = 'inline';
     }
 
     username.value = '';
@@ -128,3 +128,47 @@ if (document.querySelector('.movie-title')) {
     overlay.classList.remove('active');
   });
 }
+
+const suForm = document.querySelector('.signup-form');
+const liForm = document.querySelector('.login-form');
+
+let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+
+suForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  liForm.querySelector('.wrongC').style.display = 'none';
+  liForm.querySelector('.correctC').style.display = 'none';
+
+  const un = suForm.querySelector('#su-username').value;
+  const pw = suForm.querySelector('#su-password').value;
+
+  const user = { username: un, password: pw };
+  users.push(user);
+
+  localStorage.setItem('users', JSON.stringify(users));
+
+  suForm.querySelector('#su-username').value = '';
+  suForm.querySelector('#su-password').value = '';
+});
+
+users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+
+liForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const un = liForm.querySelector('#li-username').value;
+  const pw = liForm.querySelector('#li-password').value;
+
+  if (users.some((user) => user.username === un)) {
+    console.log('True');
+    liForm.querySelector('.wrongC').style.display = 'none';
+    liForm.querySelector('.correctC').style.display = '';
+  } else {
+    console.log('False');
+    liForm.querySelector('.wrongC').style.display = '';
+    liForm.querySelector('.correctC').style.display = 'none';
+  }
+
+  liForm.querySelector('#li-username').value = '';
+  liForm.querySelector('#li-password').value = '';
+});
