@@ -1103,13 +1103,14 @@ body .info-info-info {
 }
 body .info-info-info .password-strength {
   background-color: #1a1a1a;
-  height: 5px;
+  height: 2px;
   width: 100%;
+  margin-bottom: 5px;
   display: flex;
 }
 body .info-info-info .password-strength .not-strong, body .info-info-info .password-strength .very-strong, body .info-info-info .password-strength .strong, body .info-info-info .password-strength .kinda-strong {
   width: 22%;
-  height: 3px;
+  height: 2px;
   margin: 2px;
   background-color: #a8a8a8;
 }

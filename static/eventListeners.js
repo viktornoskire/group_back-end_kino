@@ -138,43 +138,41 @@ function capitalize(name) {
 
 const suForm = document.querySelector('.signup-form');
 
-let passed = true;
-
 const password = suForm.querySelector('#su-password');
 
 const strength = document.querySelector('.password-strength');
-const allStrengths = strength.querySelectorAll("div");
+const allStrengths = strength.querySelectorAll('div');
 const notStrong = strength.querySelector('.not-strong');
 const kindaStrong = strength.querySelector('.kinda-strong');
 const strong = strength.querySelector('.strong');
 const veryStrong = strength.querySelector('.very-strong');
 
-const hasNumber = /\d/g;
+const hasNumber = /\d/;
 
 password.addEventListener('input', () => {
   if (password.value.length === 0) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = 'grey'));
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
     suForm.querySelector('.strength-message').textContent = 'Inget lösenord';
   }
-    if (password.value.length < 6 && password.value.length > 0) {
-      allStrengths.forEach((bar) => (bar.style.backgroundColor = 'grey'));
-      suForm.querySelector('.strength-message').textContent = 'Inte starkt';
-      notStrong.style.backgroundColor = 'red';
-    }
+  if (password.value.length < 6 && password.value.length > 0) {
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+    suForm.querySelector('.strength-message').textContent = 'Inte starkt';
+    notStrong.style.backgroundColor = 'red';
+  }
   if (password.value.length >= 6) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = 'grey'));
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
     suForm.querySelector('.strength-message').textContent = 'Ganska starkt';
     notStrong.style.backgroundColor = 'orange';
     kindaStrong.style.backgroundColor = 'orange';
   }
   if (password.value.length >= 10) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = 'grey'));
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
     suForm.querySelector('.strength-message').textContent = 'Starkt';
     notStrong.style.backgroundColor = 'yellow';
     kindaStrong.style.backgroundColor = 'yellow';
     strong.style.backgroundColor = 'yellow';
   }
-  if (password.value.length > 8 && hasNumber.test(password.value)) {
+  if (password.value.length > 10 && hasNumber.test(password.value)) {
     suForm.querySelector('.strength-message').textContent = 'Väldigt starkt';
     notStrong.style.backgroundColor = 'green';
     kindaStrong.style.backgroundColor = 'green';
@@ -187,6 +185,8 @@ let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('use
 
 suForm.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  let passed = true;
 
   suForm.querySelectorAll('p').forEach((p) => ((p.style.display = 'none'), (p.style.fontSize = '0.5em')));
 
@@ -252,6 +252,8 @@ suForm.addEventListener('submit', (e) => {
   else {
     return;
   }
-
+  
+  allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+  suForm.querySelector('.strength-message').textContent = 'Inget lösenord';
   suForm.querySelectorAll('input').forEach((box) => (box.value = ''));
 });

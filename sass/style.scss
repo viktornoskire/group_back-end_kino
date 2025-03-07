@@ -49,13 +49,14 @@ body {
 
     .password-strength {
       background-color: #1a1a1a;
-      height: 5px;
+      height: 2px;
       width: 100%;
+        margin-bottom: 5px;
       display: flex;
 
-      .not-strong,.very-strong, .strong, .kinda-strong {
+      .not-strong, .very-strong, .strong, .kinda-strong {
         width: 22%;
-        height: 3px;
+        height: 2px;
         margin: 2px;
         background-color: #a8a8a8;
       }
