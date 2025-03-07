@@ -27,11 +27,17 @@ block content
                 .password
                     label(for="su-password").label Lösenord
                     input(type="password" id="su-password")
+                    .password-strength
+                        .not-strong
+                        .kinda-strong
+                        .strong
+                        .very-strong
+                    b.strength-message(style="font-size: 0.5em") Inte starkt
                     p.password-error(style="display: none") Ange ett lösenord
                 .c-password
                     label(for="su-c-password").label Bekräfta lösenord
                     input(type="password" id="su-c-password")
-                    p.c-password-error(style="display: none; color: white;") Lösenorden matchar ej
+                    p(class="c-password-error error" style="display: none; color: white;") Lösenorden matchar ej
             button(type="submit") Submit
         .info 
             .info1 

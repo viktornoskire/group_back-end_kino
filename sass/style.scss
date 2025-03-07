@@ -45,6 +45,20 @@ body {
     margin-left: 25px;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 50%;
+
+    .password-strength {
+      background-color: #1a1a1a;
+      height: 5px;
+      width: 100%;
+      display: flex;
+
+      .not-strong,.very-strong, .strong, .kinda-strong {
+        width: 22%;
+        height: 3px;
+        margin: 2px;
+        background-color: #a8a8a8;
+      }
+    }
   }
 }

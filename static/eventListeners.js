@@ -138,6 +138,42 @@ function capitalize(name) {
 
 const suForm = document.querySelector('.signup-form');
 
+let passed = true;
+
+const password = suForm.querySelector('#su-password');
+
+const strength = document.querySelector(".password-strength");
+const notStrong = strength.querySelector('.not-strong');
+const kindaStrong = strength.querySelector('.kinda-strong');
+const strong = strength.querySelector('.strong');
+const veryStrong = strength.querySelector('.very-strong');
+
+password.addEventListener('input', () => {
+  strength.querySelectorAll('p').forEach((color) => ((color.style.backgroundColor = 'grey')));
+  if (password.value.length < 4) {
+    suForm.querySelector('.strength-message').textContent = 'Inte starkt';
+    notStrong.style.backgroundColor = "red";
+  }
+  if (password.value.length >= 4 && password.value.length < 8) {
+    suForm.querySelector('.strength-message').textContent = 'Ganska starkt';
+    notStrong.style.backgroundColor = 'orange';
+    kindaStrong.style.backgroundColor = 'orange';
+  }
+  if (password.value.length >= 8 && password.value.length < 12) {
+    suForm.querySelector('.strength-message').textContent = 'Starkt';
+    notStrong.style.backgroundColor = 'yellow';
+    kindaStrong.style.backgroundColor = 'yellow';
+    strong.style.backgroundColor = 'yellow';
+  }
+  if (password.value.length >= 12 && password.value.length < 16) {
+    suForm.querySelector('.strength-message').textContent = 'Väldigt starkt';
+    notStrong.style.backgroundColor = 'green';
+    kindaStrong.style.backgroundColor = 'green';
+    strong.style.backgroundColor = 'green';
+    veryStrong.style.backgroundColor = 'green';
+  }
+});
+
 let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
 suForm.addEventListener('submit', (e) => {
@@ -155,10 +191,8 @@ suForm.addEventListener('submit', (e) => {
   const splitMail = em.includes('@') ? em.split('@') : false;
 
   // Passwords
-  const pw = suForm.querySelector('#su-password').value;
+  const pw = suForm.querySelector('#su-password');
   const cpw = suForm.querySelector('#su-c-password').value;
-
-  let passed = true;
 
   // _______INPUT CONDITIONALS________
   // First name input is empty
@@ -182,15 +216,16 @@ suForm.addEventListener('submit', (e) => {
     passed = false;
   }
   // Password input is empty
-  if (pw.trim() === '') {
+  if (pw.value.trim() === '') {
     suForm.querySelector('.password-error').style.display = '';
     passed = false;
   }
   // Confirm password input doesn't match password input
-  if (cpw.trim() !== pw.trim()) {
+  if (cpw.trim() !== pw.value.trim()) {
     suForm.querySelector('.c-password-error').style.display = '';
     passed = false;
   }
+
   // all fields are filled correctly
   if (passed) {
     const user = {
@@ -198,7 +233,7 @@ suForm.addEventListener('submit', (e) => {
       fName: capitalize(fName),
       lName: capitalize(lName),
       mail: em.toLowerCase(),
-      password: pw,
+      password: pw.value,
     };
     users.push(user);
 
@@ -209,5 +244,5 @@ suForm.addEventListener('submit', (e) => {
     return;
   }
 
-  suForm.querySelectorAll("input").forEach(box => box.value = "");
+  suForm.querySelectorAll('input').forEach((box) => (box.value = ''));
 });
