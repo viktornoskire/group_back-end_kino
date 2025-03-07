@@ -10,30 +10,29 @@ block content
             .info-info-info
                 .fname 
                     label(for="su-fname").label Förnamn
-                    input(type="text" placeholder="förnamn..." id="su-fname")
+                    input(type="text" id="su-fname")
+                    p.fname-error(style="display: none") Ange förnamn
                 .lname
                     label(for="su-lname").label Efternamn
-                    input(type="text" placeholder="efternamn..." id="su-lname")
+                    input(type="text" id="su-lname")
+                    p.lname-error(style="display: none") Ange efternamn
                 .username
                     label(for="su-username").label Användarnamn
-                    input(type="text" placeholder="användarnamn..." id="su-username")
+                    input(type="text" id="su-username")
+                    p.username-error(style="display: none") Användarnamn upptaget
                 .mail
                     label(for="su-mail").label E-postadress
-                    input(type="text" placeholder="E-postadress..." id="su-mail")
+                    input(type="mail" id="su-mail")
+                    p.mail-error(style="display: none") Ange korrekt E-postadress
                 .password
                     label(for="su-password").label Lösenord
-                    input(type="password" placeholder="lösenord..." id="su-password")
+                    input(type="password" id="su-password")
+                    p.password-error(style="display: none") Ange ett lösenord
                 .c-password
                     label(for="su-c-password").label Bekräfta lösenord
-                    input(type="password" placeholder="bekräfta lösenord..." id="su-c-password")
+                    input(type="password" id="su-c-password")
+                    p.c-password-error(style="display: none; color: white;") Lösenorden matchar ej
             button(type="submit") Submit
-        form(action="" class="login-form")
-            h2 Login
-            input(type="text" placeholder="username..." id="li-username")
-            input(type="password" placeholder="password..." id="li-password")
-            button(type="submit") Submit 
-            p.wrongC(style="display: none") Wrong Credentials
-            p.correctC(style="display: none") Correct Credentials
         .info 
             .info1 
                 h1.cinema-title Kino Sandviken

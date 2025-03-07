@@ -129,82 +129,85 @@ if (document.querySelector('.movie-title')) {
   });
 }
 
+// ____ Sign up _____
+
+// Function to decapitalize the name and capitalize only the first letter
+function capitalize(name) {
+  return String(name[0]).toUpperCase() + String(name).slice(1).toLowerCase();
+}
+
 const suForm = document.querySelector('.signup-form');
-const liForm = document.querySelector('.login-form');
 
 let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
 suForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  liForm.querySelector('.wrongC').style.display = 'none';
-  liForm.querySelector('.correctC').style.display = 'none';
 
+  suForm.querySelectorAll('p').forEach((p) => ((p.style.display = 'none'), (p.style.fontSize = '0.5em')));
+
+  // Names
   const fName = suForm.querySelector('#su-fname').value;
   const lName = suForm.querySelector('#su-lname').value;
   const un = suForm.querySelector('#su-username').value;
+
+  // Mail
   const em = suForm.querySelector('#su-mail').value;
+  const splitMail = em.includes('@') ? em.split('@') : false;
+
+  // Passwords
   const pw = suForm.querySelector('#su-password').value;
   const cpw = suForm.querySelector('#su-c-password').value;
-  const splitMail = em.split('@');
 
-  if (
-    fName.trim() === '' ||
-    lName.trim() === '' ||
-    un.trim() === '' ||
-    em.trim() === '' ||
-    pw.trim() === '' ||
-    cpw.trim() === ''
-  ) {
-    liForm.querySelector('.wrongC').style.display = '';
+  let passed = true;
+
+  // _______INPUT CONDITIONALS________
+  // First name input is empty
+  if (fName.trim() === '') {
+    suForm.querySelector('.fName-error').style.display = '';
+    passed = false;
+  }
+  // Last name input is emty
+  if (lName.trim() === '') {
+    suForm.querySelector('.lName-error').style.display = '';
+    passed = false;
+  }
+  // Username input is empty or the user already exist
+  if (un.trim() === '' || users.some((user) => user.username === un)) {
+    suForm.querySelector('.username-error').style.display = '';
+    passed = false;
+  }
+  // Mail input is empty, no "@", empty text before "@" or not correct "gmail.com"
+  if (em.trim() === '' || splitMail === false || splitMail[0] === '' || splitMail[1].toLowerCase() !== 'gmail.com') {
+    suForm.querySelector('.mail-error').style.display = '';
+    passed = false;
+  }
+  // Password input is empty
+  if (pw.trim() === '') {
+    suForm.querySelector('.password-error').style.display = '';
+    passed = false;
+  }
+  // Confirm password input doesn't match password input
+  if (cpw.trim() !== pw.trim()) {
+    suForm.querySelector('.c-password-error').style.display = '';
+    passed = false;
+  }
+  // all fields are filled correctly
+  if (passed) {
+    const user = {
+      username: un,
+      fName: capitalize(fName),
+      lName: capitalize(lName),
+      mail: em.toLowerCase(),
+      password: pw,
+    };
+    users.push(user);
+
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+  // input fields are not correctly filled
+  else {
     return;
   }
 
-  if (splitMail[0] === '' || splitMail[1].toLowerCase() !== 'gmail.com') {
-    liForm.querySelector('.wrongC').style.display = '';
-    return;
-  }
-
-  if (pw.trim() !== cpw.trim()) {
-    liForm.querySelector('.wrongC').style.display = '';
-    return;
-  }
-
-  if (users.some((user) => user.username === un)) {
-    liForm.querySelector('.wrongC').style.display = '';
-    liForm.querySelector('.wrongC').textContent = 'Username already taken';
-    liForm.querySelector('.correctC').style.display = 'none';
-    return;
-  }
-
-  const user = { username: un, password: pw };
-  users.push(user);
-
-  localStorage.setItem('users', JSON.stringify(users));
-
-  suForm.querySelector('#su-fname').value = '';
-  suForm.querySelector('#su-lname').value = '';
-  suForm.querySelector('#su-username').value = '';
-  suForm.querySelector('#su-mail').value = '';
-  suForm.querySelector('#su-password').value = '';
-  suForm.querySelector('#su-c-password').value = '';
-});
-
-liForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const un = liForm.querySelector('#li-username').value;
-  const pw = liForm.querySelector('#li-password').value;
-
-  if (users.some((user) => user.username === un)) {
-    console.log('True');
-    liForm.querySelector('.wrongC').style.display = 'none';
-    liForm.querySelector('.correctC').style.display = '';
-  } else {
-    console.log('False');
-    liForm.querySelector('.wrongC').style.display = '';
-    liForm.querySelector('.correctC').style.display = 'none';
-  }
-
-  liForm.querySelector('#li-username').value = '';
-  liForm.querySelector('#li-password').value = '';
+  suForm.querySelectorAll("input").forEach(box => box.value = "");
 });
