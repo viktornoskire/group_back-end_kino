@@ -1,0 +1,43 @@
+doctype html
+html(lang="sv")
+  head
+    title Bli medlem - KINO
+    link(rel="stylesheet" href="../static/css/register.css") 
+    script(src="../static/register.js" defer) 
+    script(src="https://unpkg.com/@tailwindcss/browser@4" defer)
+  body(class="bg-neutral-900 flex items-center justify-center min-h-screen p-4")
+    div(class="bg-neutral-800 text-white p-8 rounded-xl w-full max-w-md shadow-lg")
+      
+      div(class="flex justify-center mb-6")
+        img(src="/movies/img/Kino - koncept.png" alt="KINO Logo" class="h-18")
+
+      h2(class="text-2xl font-bold mb-2") Bli medlem
+      p(class="text-sm text-neutral-400 mb-6") Fyll i din e-post och lösenord, klicka sedan på skicka verifieringskod.
+
+      form(onSubmit="registerUser(event)")
+        label(class="block font-semibold mb-1") Förnamn
+        input(type="text" id="firstname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+
+        label(class="block font-semibold mb-1") Efternamn
+        input(type="text" id="lastname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+
+        label(class="block font-semibold mb-1") Användarnamn
+        input(type="text" id="username" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+
+        label(class="block font-semibold mb-1") E-postadress
+        input(type="email" id="email" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+
+        label(class="block font-semibold mb-1") Lösenord
+        input(type="password" id="password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-2 outline-none focus:ring-2 focus:ring-red-500")
+        
+        div(class="h-1 bg-gray-600 rounded-full overflow-hidden mb-4")
+        div(id="password-strength" class="h-full w-0 bg-green-500 transition-all duration-300")
+        p(id="password-strength-text" class="text-xs text-gray-400 mb-4") 
+
+        label(class="block font-semibold mb-1") Bekräfta lösenord
+        input(type="password" id="confirm-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-6 outline-none focus:ring-2 focus:ring-red-500")
+
+        button(type="submit" class="w-full bg-red-500 text-white p-3 rounded-lg text-lg font-semibold hover:bg-red-600 transition") Skapa konto
+
+      div(class="text-center mt-4")
+        a(href="/" class="text-gray-400 hover:text-white text-sm") Avbryt

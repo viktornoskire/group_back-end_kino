@@ -52,6 +52,10 @@ export default function initialize(api) {
       console.error(err.message);
       res.status(404).render('404', { data: createData() });
     }
+   });
+
+   app.get('/register', async (req, res) => {
+    res.render('register');
   });
 
   app.get('/api/reviews/:id/:page', async (req, res) => {
