@@ -140,46 +140,12 @@ const suForm = document.querySelector('.signup-form');
 
 const password = suForm.querySelector('#su-password');
 
-const strength = document.querySelector('.password-strength');
+const strength = document.querySelector('#password-strength');
 const allStrengths = strength.querySelectorAll('div');
-const notStrong = strength.querySelector('.not-strong');
-const kindaStrong = strength.querySelector('.kinda-strong');
-const strong = strength.querySelector('.strong');
-const veryStrong = strength.querySelector('.very-strong');
-
-const hasNumber = /\d/;
-
-password.addEventListener('input', () => {
-  if (password.value.length === 0) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
-    suForm.querySelector('.strength-message').textContent = 'Inget lösenord';
-  }
-  if (password.value.length < 6 && password.value.length > 0) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
-    suForm.querySelector('.strength-message').textContent = 'Inte starkt';
-    notStrong.style.backgroundColor = 'red';
-  }
-  if (password.value.length >= 6) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
-    suForm.querySelector('.strength-message').textContent = 'Ganska starkt';
-    notStrong.style.backgroundColor = 'orange';
-    kindaStrong.style.backgroundColor = 'orange';
-  }
-  if (password.value.length >= 10) {
-    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
-    suForm.querySelector('.strength-message').textContent = 'Starkt';
-    notStrong.style.backgroundColor = 'yellow';
-    kindaStrong.style.backgroundColor = 'yellow';
-    strong.style.backgroundColor = 'yellow';
-  }
-  if (password.value.length > 10 && hasNumber.test(password.value)) {
-    suForm.querySelector('.strength-message').textContent = 'Väldigt starkt';
-    notStrong.style.backgroundColor = 'green';
-    kindaStrong.style.backgroundColor = 'green';
-    strong.style.backgroundColor = 'green';
-    veryStrong.style.backgroundColor = 'green';
-  }
-});
+const notStrong = strength.querySelector('#not-strong');
+const kindaStrong = strength.querySelector('#kinda-strong');
+const strong = strength.querySelector('#strong');
+const veryStrong = strength.querySelector('#very-strong');
 
 let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
@@ -188,7 +154,7 @@ suForm.addEventListener('submit', (e) => {
 
   let passed = true;
 
-  suForm.querySelectorAll('p').forEach((p) => ((p.style.display = 'none'), (p.style.fontSize = '0.5em')));
+  suForm.querySelectorAll('p').forEach((p) => (p.className = 'hidden'));
 
   // Names
   const fName = suForm.querySelector('#su-fname').value;
@@ -206,32 +172,42 @@ suForm.addEventListener('submit', (e) => {
   // _______INPUT CONDITIONALS________
   // First name input is empty
   if (fName.trim() === '') {
-    suForm.querySelector('.fName-error').style.display = '';
+    suForm.querySelector('#fName-error').className = 'block italic justify-self-end';
     passed = false;
   }
   // Last name input is emty
   if (lName.trim() === '') {
-    suForm.querySelector('.lName-error').style.display = '';
+    suForm.querySelector('#lName-error').className = 'block italic justify-self-end';
     passed = false;
   }
   // Username input is empty or the user already exist
-  if (un.trim() === '' || users.some((user) => user.username === un)) {
-    suForm.querySelector('.username-error').style.display = '';
+  if (un.trim() === '') {
+    suForm.querySelector('#username-error').textContent = 'Ange användarnamn';
+    suForm.querySelector('#username-error').className = 'block italic justify-self-end';
+    passed = false;
+  } else if (users.some((user) => user.username === un)) {
+    suForm.querySelector('#username-error').textContent = 'Användarnamn upptaget';
+    suForm.querySelector('#username-error').className = 'block italic justify-self-end';
     passed = false;
   }
   // Mail input is empty, no "@", empty text before "@" or not correct "gmail.com"
   if (em.trim() === '' || splitMail === false || splitMail[0] === '' || splitMail[1].toLowerCase() !== 'gmail.com') {
-    suForm.querySelector('.mail-error').style.display = '';
+    suForm.querySelector('#mail-error').textContent = 'Ange korrekt E-postadress';
+    suForm.querySelector('#mail-error').className = 'block italic justify-self-end';
+    passed = false;
+  } else if (users.some((user) => user.mail === em.toLowerCase())) {
+    suForm.querySelector('#mail-error').textContent = 'E-postadress upptaget';
+    suForm.querySelector('#mail-error').className = 'block italic justify-self-end';
     passed = false;
   }
   // Password input is empty
   if (pw.value.trim() === '') {
-    suForm.querySelector('.password-error').style.display = '';
+    suForm.querySelector('#password-error').className = 'block italic justify-self-end';
     passed = false;
   }
   // Confirm password input doesn't match password input
   if (cpw.trim() !== pw.value.trim()) {
-    suForm.querySelector('.c-password-error').style.display = '';
+    suForm.querySelector('#c-password-error').className = 'block italic justify-self-end';
     passed = false;
   }
 
@@ -254,6 +230,5 @@ suForm.addEventListener('submit', (e) => {
   }
   
   allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
-  suForm.querySelector('.strength-message').textContent = 'Inget lösenord';
-  suForm.querySelectorAll('input').forEach((box) => (box.value = ''));
+  document.querySelectorAll('input').forEach((box) => (box.value = ''));
 });

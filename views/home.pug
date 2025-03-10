@@ -2,43 +2,50 @@ extends templates/main
 
 block title 
     title Home 
+    script(src="https://unpkg.com/@tailwindcss/browser@4" defer)
 
 block content 
     main 
-        form(action="" class="signup-form")
-            h2 Sign up
-            .info-info-info
-                .fname 
-                    label(for="su-fname").label Förnamn
-                    input(type="text" id="su-fname")
-                    p.fname-error(style="display: none") Ange förnamn
-                .lname
-                    label(for="su-lname").label Efternamn
-                    input(type="text" id="su-lname")
-                    p.lname-error(style="display: none") Ange efternamn
-                .username
-                    label(for="su-username").label Användarnamn
-                    input(type="text" id="su-username")
-                    p.username-error(style="display: none") Användarnamn upptaget
-                .mail
-                    label(for="su-mail").label E-postadress
-                    input(type="mail" id="su-mail")
-                    p.mail-error(style="display: none") Ange korrekt E-postadress
-                .password
-                    label(for="su-password").label Lösenord
-                    input(type="password" id="su-password")
-                    .password-strength
-                        .not-strong
-                        .kinda-strong
-                        .strong
-                        .very-strong
-                    b.strength-message(style="font-size: 0.5em") Inget lösenord
-                    p.password-error(style="display: none") Ange ett lösenord
-                .c-password
-                    label(for="su-c-password").label Bekräfta lösenord
-                    input(type="password" id="su-c-password")
-                    p(class="c-password-error error" style="display: none; color: white;") Lösenorden matchar ej
-            button(type="submit") Submit
+        div(class="bg-neutral-800 text-white p-8 rounded-xl w-full max-w-md shadow-lg")
+            div(class="flex justify-center mb-6")
+                img(src="/movies/img/Kino - koncept.png" alt="KINO Logo" class="h-18")
+
+            h2(class="text-2xl font-bold mb-2") Bli medlem
+            p(class="text-sm text-neutral-400 mb-6") Fyll i din e-post och lösenord, klicka sedan på skicka verifieringskod.
+
+            form(action="" class="signup-form")
+                label(for="su-fname" class="block font-semibold mb-1") Förnamn
+                input(type="text" id="su-fname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500 border-2 border-s-gray-300")
+                p#fname-error(class="hidden") Ange förnamn
+
+                label(for="su-lname" class="block font-semibold mb-1") Efternamn
+                input(type="text" id="su-lname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                p#lname-error(class="hidden") Ange efternamn
+
+                label(for="su-username" class="block font-semibold mb-1") Användarnamn
+                input(type="text" id="su-username" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                p#username-error(class="hidden") Ange användarnamn
+
+                label(for="su-mail" class="block font-semibold mb-1") E-postadress
+                input(type="mail" id="su-mail" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                p#mail-error(class="hidden") Ange korrekt E-postadress
+
+                label(for="su-password" class="block font-semibold mb-1") Lösenord
+                input(type="password" id="su-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                #password-strength(class="flex w-auto h-1")
+                    #not-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                    #kinda-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                    #strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                    #very-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                b(class="text-xs text-gray-400 block justify-self-end m-2")#strength-message Inget lösenord
+                p#password-error(class="hidden") Ange ett lösenord
+
+                label(for="su-c-password" class="block font-semibold mb-1") Bekräfta lösenord
+                input(type="password" id="su-c-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                p#c-password-error(class="hidden") Lösenorden matchar ej
+
+                button(type="submit" class="w-full bg-red-500 text-white p-3 rounded-3xl text-lg font-semibold hover:bg-red-600 transition") Skapa konto
+
         .info 
             .info1 
                 h1.cinema-title Kino Sandviken

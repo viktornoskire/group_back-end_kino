@@ -1095,24 +1095,5 @@ body .kino-img {
   margin-left: auto;
   margin-right: auto;
 }
-body .info-info-info {
-  margin-left: 25px;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-body .info-info-info .password-strength {
-  background-color: #1a1a1a;
-  height: 2px;
-  width: 100%;
-  margin-bottom: 5px;
-  display: flex;
-}
-body .info-info-info .password-strength .not-strong, body .info-info-info .password-strength .very-strong, body .info-info-info .password-strength .strong, body .info-info-info .password-strength .kinda-strong {
-  width: 22%;
-  height: 2px;
-  margin: 2px;
-  background-color: #a8a8a8;
-}
 
 /*# sourceMappingURL=style.css.map */
