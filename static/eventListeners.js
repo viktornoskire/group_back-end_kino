@@ -147,6 +147,43 @@ const kindaStrong = strength.querySelector('#kinda-strong');
 const strong = strength.querySelector('#strong');
 const veryStrong = strength.querySelector('#very-strong');
 
+const veryWeakPassword = /^(?=(.*[a-z])).{4,}$/;
+const weakPassword = /^(?=(.*[a-z]){5,})(?=(.*[A-Z]){1,}).{6,}$/;
+const strongPassword = /^(?=(.*[a-z]){4,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,}).{8,}$/;
+const veryStrongPassword = /^(?=(.*[a-z]){5,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{10,}$/;
+
+password.addEventListener('input', () => {
+  if (password.value.length === 0) {
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+    suForm.querySelector('#strength-message').textContent = 'Inget lösenord';
+  }
+  if (veryWeakPassword.test(password.value)) {
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+    suForm.querySelector('#strength-message').textContent = 'Väldigt svagt';
+    notStrong.style.backgroundColor = '#A72224';
+  }
+  if (weakPassword.test(password.value)) {
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+    suForm.querySelector('#strength-message').textContent = 'Svagt';
+    notStrong.style.backgroundColor = '#FFCA28';
+    kindaStrong.style.backgroundColor = '#FFCA28';
+  }
+  if (strongPassword.test(password.value)) {
+    allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
+    suForm.querySelector('#strength-message').textContent = 'Starkt';
+    notStrong.style.backgroundColor = '#64DD17';
+    kindaStrong.style.backgroundColor = '#64DD17';
+    strong.style.backgroundColor = '#64DD17';
+  }
+  if (veryStrongPassword.test(password.value)) {
+    suForm.querySelector('#strength-message').textContent = 'Väldigt starkt';
+    notStrong.style.backgroundColor = '#154E10';
+    kindaStrong.style.backgroundColor = '#154E10';
+    strong.style.backgroundColor = '#154E10';
+    veryStrong.style.backgroundColor = '#154E10';
+  }
+});
+
 let users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
 suForm.addEventListener('submit', (e) => {
