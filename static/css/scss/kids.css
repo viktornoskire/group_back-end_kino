@@ -1,0 +1,174 @@
+.div-hero {
+  display: flex;
+  justify-content: center;
+}
+.div-hero .kids-hero {
+  position: absolute;
+}
+@media screen and (max-width: 500px) {
+  .div-hero .kids-hero {
+    width: 90%;
+  }
+}
+.div-hero .kids-img {
+  position: relative;
+  margin-top: 3.75rem;
+  z-index: 999;
+}
+@media screen and (max-width: 500px) {
+  .div-hero .kids-img {
+    width: 50%;
+    margin-top: 12%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .div-hero .kids-img {
+    margin-top: 8%;
+  }
+}
+
+.article-kids {
+  max-width: 480px;
+  margin: auto;
+}
+@media screen and (min-width: 1280px) {
+  .article-kids {
+    max-width: 1280px;
+  }
+}
+.article-kids .kids-div {
+  color: #f6f6f6;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.article-kids .kids-div .kids-header {
+  margin-top: 15%;
+  font-size: 1.5rem;
+}
+@media screen and (min-width: 1280px) {
+  .article-kids .kids-div .kids-header {
+    font-size: 2.5rem;
+    font-weight: normal;
+  }
+}
+.article-kids .kids-div .kids-mainHeader {
+  font-size: 2.5rem;
+  font-weight: normal;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+.article-kids .kids-div .kids-text {
+  font-size: 1.5rem;
+  margin-top: 0.626rem;
+  margin-bottom: 3.125rem;
+}
+@media screen and (min-width: 1280px) {
+  .article-kids .kids-div .kids-text {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+}
+.article-kids .kids-div .kids-button {
+  background-color: #fc263a;
+  padding: 0.625rem 2.5rem;
+  border-radius: 1.5rem;
+  color: #f6f6f6;
+  border-color: transparent;
+}
+@media screen and (min-width: 1280px) {
+  .article-kids .kids-div .kids-button {
+    font-size: 1.25rem;
+  }
+}
+
+.article-party {
+  max-width: 480px;
+  margin: auto;
+  justify-content: center;
+}
+@media screen and (min-width: 1280px) {
+  .article-party {
+    display: flex;
+    max-width: 1280px;
+  }
+}
+.article-party .party-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3.75rem;
+  padding: 1.25rem;
+}
+@media screen and (min-width: 1280px) {
+  .article-party .party-div {
+    max-width: 550px;
+  }
+}
+.article-party .party-div .party-img {
+  z-index: 999;
+  max-width: 388px;
+}
+@media screen and (max-width: 500px) {
+  .article-party .party-div .party-img {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .article-party .party-div .party-img {
+    max-width: 100%;
+  }
+}
+.article-party .party-div .party-styling {
+  display: grid;
+  grid-template-columns: 1.25rem auto 1.25rem;
+  background-color: #f6f6f6;
+  color: black;
+  padding-top: 5rem;
+  padding-bottom: 1.25rem;
+  border-radius: 1.8rem;
+  margin-top: -7.8rem;
+}
+@media screen and (min-width: 1280px) {
+  .article-party .party-div .party-styling {
+    height: 500px;
+    grid-template-rows: max-content;
+  }
+}
+.article-party .party-div .party-styling .party-header {
+  grid-column: 2;
+  font-size: 2.25rem;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+@media screen and (min-width: 1280px) {
+  .article-party .party-div .party-styling .party-header {
+    margin-top: 3rem;
+  }
+}
+.article-party .party-div .party-styling .party-text {
+  grid-column: 2;
+  margin-bottom: 0.625rem;
+}
+.article-party .party-div .party-styling .party-list {
+  grid-column: 2;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.article-party .party-div .party-styling .party-button {
+  grid-column: 2;
+  justify-self: end;
+  background-color: #fc263a;
+  padding: 0.625rem 2.5rem;
+  border-radius: 1.5rem;
+  color: #f6f6f6;
+  border-color: transparent;
+}
+@media screen and (min-width: 1280px) {
+  .article-party .party-div .party-styling .party-button {
+    font-size: 1.25rem;
+    align-self: flex-end;
+  }
+}
+
+/*# sourceMappingURL=kids.css.map */

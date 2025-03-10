@@ -1,0 +1,13 @@
+.error-div {
+  text-align: center;
+  margin-bottom: 10rem;
+  background-color: #2d2d2d;
+  margin: 15rem;
+  padding: 4rem;
+  border-radius: 20px;
+}
+.error-div .back-to-home {
+  color: inherit;
+}
+
+/*# sourceMappingURL=error.css.map */

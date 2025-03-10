@@ -1,0 +1,50 @@
+.footer-container {
+  background-color: #2d2d2d;
+  border-radius: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
+  margin: 1rem;
+}
+.footer-container .section-container {
+  display: flex;
+}
+.footer-container h4 {
+  font-size: 1.2rem;
+}
+.footer-container li {
+  list-style: none;
+  margin-left: -2.5rem;
+}
+.footer-container .footer-icon {
+  height: 2.5rem;
+}
+.footer-container .footer-a {
+  color: #fc263a;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  bottom: 0.8rem;
+}
+.footer-container .footer-afind {
+  margin-left: 0;
+  color: #fc263a;
+  margin-bottom: 3rem;
+}
+.footer-container span {
+  display: block;
+  border-top: 0.5rem solid #a8a8a8;
+  margin-top: 2rem;
+}
+.footer-container .footer-logo {
+  height: 4rem;
+  display: inline;
+  margin-top: 1rem;
+}
+.footer-container .footer-logotext {
+  display: inline;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  position: relative;
+  bottom: 1.5rem;
+}
+
+/*# sourceMappingURL=footer.css.map */

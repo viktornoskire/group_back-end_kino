@@ -7,7 +7,10 @@ export async function top5Movies(cmsAdapter) {
     const movies = await cmsAdapter.loadMovies();
 
     //Creates a date thats always 30 days ago (back in time)
-    const thirtyDaysAgo = new Date();
+    // const thirtyDaysAgo = new Date();
+    // thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const today = new Date();
+    const thirtyDaysAgo = new Date(today);
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
     //Using Promise.all to get all reviews at the same time.

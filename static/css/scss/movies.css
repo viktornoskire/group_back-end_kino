@@ -1,0 +1,59 @@
+.movie-headline {
+  max-width: 1280px;
+  background-color: #1a1a1a;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem 1rem;
+  font-size: 1rem;
+  color: #f6f6f6;
+  font-weight: 700;
+  text-align: center;
+}
+
+.movie-container {
+  max-width: 1280px;
+  background-color: #1a1a1a;
+  color: #f6f6f6;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 1rem;
+  margin: 1em auto;
+}
+.movie-container .movie-card img {
+  width: 100%;
+  height: 20rem;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.movie-container .movie-card a {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  color: inherit;
+  text-decoration: none;
+}
+.movie-container .movie-card a:hover {
+  cursor: pointer;
+}
+.movie-container .movie-card p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+@media screen and (min-width: 500px) {
+  .movie-headline {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+  }
+  .movie-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1000px) {
+  .movie-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/*# sourceMappingURL=movies.css.map */

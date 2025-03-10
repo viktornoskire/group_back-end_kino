@@ -1,0 +1,73 @@
+.about-main-header {
+  display: flex;
+  width: auto;
+  height: 10rem;
+  background: linear-gradient(60deg, rgb(220, 0, 0), rgb(0, 0, 190), rgb(255, 0, 0));
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border-radius: 1rem;
+  margin: 2rem 1rem 0 1rem;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #2d2d2d;
+  border: 0.2rem solid rgb(83, 83, 83);
+  border-radius: 0.8rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  margin: 0 1rem 2rem 1rem;
+}
+
+.about-header h2 {
+  margin-left: 1rem;
+  font-weight: 400;
+}
+
+.about-section h3 {
+  text-decoration: underline;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+.about-section p {
+  color: #a8a8a8;
+  margin: 0.5rem 0;
+}
+
+.about-header {
+  padding-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 1280px) {
+  .about-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+  }
+  .about-main-header,
+  .about-header {
+    grid-column: span 2;
+  }
+  .about-main-header {
+    height: 15rem;
+    font-size: 6rem;
+  }
+  .about-section {
+    margin: 0 1rem;
+    padding: 2rem;
+  }
+  .about-header {
+    font-size: 1.5rem;
+  }
+  .about-section h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/*# sourceMappingURL=about.css.map */

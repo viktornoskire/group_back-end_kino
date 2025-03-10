@@ -41,6 +41,7 @@ describe('top5Movies()', () => {
   //Test 2 for top5Movies function
   //////
   it('Returns top 5 movies sorted by rating and review count', async () => {
+    jest.setSystemTime(new Date(2025, 1, 2));
     const cmsAdapter = {
       loadMovies: async () => [
         { id: 1, title: 'Pulp Fiction' },
@@ -66,7 +67,7 @@ describe('top5Movies()', () => {
   });
 
   it('Returns only movies with valid reviews from last 30 days', async () => {
-    jest.setSystemTime(new Date(2025, 1, 3));
+    jest.setSystemTime(new Date(2025, 1, 2));
 
     const cmsAdapter = {
       loadMovies: async () => [
@@ -96,6 +97,7 @@ describe('top5Movies()', () => {
   });
 
   it('Only shows 5 movies total', async () => {
+    jest.setSystemTime(new Date(2025, 1, 2));
     const cmsAdapter = {
       loadMovies: async () => [
         { id: 1, title: 'Pulp Fiction' },
