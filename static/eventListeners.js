@@ -134,17 +134,11 @@ if (document.querySelector('.movie-title')) {
 const signup = document.querySelector('#signup-modal');
 const overlay = document.querySelector('.overlay-blur');
 
-document.querySelector('#loginButton').addEventListener('click', () => {
-  signup.classList.remove('hidden');
-  signup.classList.add('flex');
-  overlay.classList.add('active');
-
-});
-
 document.querySelector('#cancel-signup').addEventListener('click', () => {
   signup.classList.remove('flex');
   signup.classList.add('hidden');
   overlay.classList.remove('active');
+  suForm.querySelectorAll('p').forEach((p) => (p.className = 'hidden'));
 });
 
 // Function to decapitalize the name and capitalize only the first letter
@@ -284,4 +278,29 @@ suForm.addEventListener('submit', (e) => {
 
   allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
   document.querySelectorAll('input').forEach((box) => (box.value = ''));
+});
+
+// ____ LOGIN _____
+
+const login = document.querySelector('#login');
+const registerBtn = document.querySelector('#register-btn');
+
+registerBtn.addEventListener('click', () => {
+  login.classList.remove('flex');
+  login.classList.add('hidden');
+
+  signup.classList.remove('hidden');
+  signup.classList.add('flex');
+});
+
+document.querySelector('#loginButton').addEventListener('click', () => {
+  login.classList.remove('hidden');
+  login.classList.add('flex');
+  overlay.classList.add('active');
+});
+
+document.querySelector('#cancel-btn').addEventListener('click', () => {
+  login.classList.remove('flex');
+  login.classList.add('hidden');
+  overlay.classList.remove('active');
 });
