@@ -8,7 +8,7 @@ block content
     main 
         .info 
             .info1 
-                h1.cinema-title Kino Sandviken
+                h1.cinema-title(class="text-3xl font-bold") Kino Sandviken
                 p.cinema-open Öppet idag 17:00 - 21:00
                 .info-modal
                     p.modal-title Vanliga frågor
@@ -45,8 +45,8 @@ block content
                                         p.open-times-date= date.datum
                                         p.open-times-time= date.tid
             .info2
-                .open-div 
-                    h3.desktop-open-title Öppettider
+                .open-div(class="mb-3")
+                    h3.desktop-open-title(class="font-bold") Öppettider
                     p.desktop-open-paragraph Biografen stänger 15 minuter efter föreställningen
                         each date in data.open 
                             .open-times
