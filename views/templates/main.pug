@@ -1,13 +1,15 @@
 html(lang="en")
     head
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", type="text/css", href="./static/style.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" type="text/css" href="./static/style.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css")
         block title 
         script(defer type="module" src="./static/eventListeners.js")
         script(defer type="module" src="./static/fetchScreenings.js")
         script(defer type="module" src="./static/fetchMovieRating.js")
+        script(defer src="https://unpkg.com/@tailwindcss/browser@4")
+
     body 
         header 
             #navigation-menu 
@@ -32,12 +34,12 @@ html(lang="en")
                         img.overlay-logo(src="./img/kinoLogoOverlay.png" alt="Picture for the brands logotype.")
                     ul.menu-links 
                         each link in data.header.hamburgerMenu.menuLinks 
-                                li
-                                    a(href=link.link)= link.text
+                            li
+                                a(href=link.link)= link.text
                 .overlay-blur
         block content
-        div(class="z-998")
-            div(id="signup-modal" class="z-999 bg-neutral-800 text-white p-8 rounded-xl w-100 shadow-lg fixed flex-col top-2 bottom-2 right-2 left-2 ml-auto mr-auto overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 hidden")
+        div
+            div(id="signup-modal" class="z-999 bg-neutral-800 text-white w-100 p-8 rounded-xl shadow-lg fixed flex-col top-2 bottom-2 right-2 left-2 ml-auto mr-auto overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 hidden")
                 div(class="flex justify-center mb-6")
                     img(src="/movies/img/Kino - koncept.png" alt="KINO Logo" class="h-18")
 
@@ -75,9 +77,28 @@ html(lang="en")
                     input(type="password" id="su-c-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
                     p#c-password-error(class="hidden") Lösenorden matchar ej
 
-                    button(type="submit" class="w-full bg-red-500 text-white p-3 rounded-3xl text-lg font-semibold hover:bg-red-600 transition") Skapa konto
+                    button(type="submit" class="w-full bg-red-500 text-white p-3 rounded-3xl text-lg font-semibold hover:bg-red-600 transition cursor-pointer") Skapa konto
 
                 p(class="text-gray-400 hover:text-white text-sm hover:cursor-pointer mt-5 ml-auto mr-auto")#cancel-signup Avbryt
+
+        div#login(class="justify-center items-center z-999 hidden fixed top-2 bottom-2 left-2 right-2 pointer-events-all")
+            div(class=" bg-neutral-800 rounded-lg p-8 shadow-lg")
+                div(class="flex justify-center")
+                    img(src="/movies/img/Kino - koncept.png" alt="KINO Logo" class="w-24 h-auto")
+
+                h2(class="text-white text-xl font-semibold text-center my-8") Logga in eller bli medlem
+                form#login-form
+                    label(class="text-white mt-4 block") E-postadress
+                    input#email(class="w-full p-2 mt-1 rounded bg-neutral-900 border border-neutral-100 text-white mb-4" type="email" placeholder="Din e-postadress")
+
+                    label(class="text-white mt-4 block") Lösenord
+                    input#password(class="w-full p-2 mt-1 rounded bg-neutral-900 border border-neutral-100 text-white mb-4" type="password" placeholder="Ditt lösenord")
+
+                    p#error-message(class="text-red-500 text-sm text-right hidden")
+
+                    button#login-btn(class="w-full mt-4 bg-red-500 text-white py-2 rounded-full text-lg font-semibold cursor-pointer") Logga in
+                button#register-btn(class="w-full mt-3 border-2 border-red-500 text-white py-2 rounded-full text-lg font-semibold cursor-pointer") Bli medlem
+                button#cancel-btn(class="w-full mt-3 text-white py-2 rounded-lg text-sm hover:text-gray-200 cursor-pointer") Avbryt
         footer.footer-container
             .sections-container
                 - const contact = data.footer.sections[0]
