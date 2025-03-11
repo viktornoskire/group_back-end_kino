@@ -270,6 +270,26 @@ suForm.addEventListener('submit', (e) => {
     users.push(user);
 
     localStorage.setItem('users', JSON.stringify(users));
+
+    signup.classList.remove('flex');
+    signup.classList.add('hidden');
+
+    const suConf = document.querySelector('#signup-confirm');
+    suConf.classList.remove('hidden');
+    suConf.classList.add('flex');
+
+    const thanks = suConf.querySelector('#thankyou-message').textContent;
+    suConf.querySelector('#thankyou-message').textContent = thanks + ' ' + capitalize(fName) + "!";
+
+    const gotoLogin = suConf.querySelector('#goto-login');
+    gotoLogin.addEventListener('click', () => {
+      suConf.classList.remove('flex');
+      suConf.classList.add('hidden');
+      suConf.querySelector('#thankyou-message').textContent = 'Tack för att du har skapat ett konto hos oss';
+
+      login.classList.remove('hidden');
+      login.classList.add('flex');
+    });
   }
   // input fields are not correctly filled
   else {
@@ -345,5 +365,14 @@ liForm.addEventListener('submit', (e) => {
 
   login.classList.remove('flex');
   login.classList.add('hidden');
-  overlay.classList.remove('active');
+  
+  const liConf = document.querySelector("#login-confirm");
+  liConf.classList.remove("hidden");
+  liConf.classList.add("flex");
+
+  liConf.querySelector("#close").addEventListener("click", () => {
+    liConf.classList.remove('flex');
+    liConf.classList.add('hidden');
+    overlay.classList.remove("active");
+  });
 });
