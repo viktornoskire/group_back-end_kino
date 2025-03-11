@@ -32,6 +32,12 @@ block content
             input(type="text" placeholder="Namn...").name-input
             button(type="submit").review-btn Skicka
             p.error-message Alla fält måste vara ifyllda
+        div.form-container
+            .login-form
+                h3.login-title Logga in
+                input(name="username" placeholder="användarnamn...").login-user
+                input(type="password" name="password" placeholder="lösenord...").login-password
+                button.login-submit logga in
         section.screeningsID-container 
             h3.screeningsID-title Kommande visningar av #{movie.title}
             ul.screeningsID-list
@@ -42,5 +48,6 @@ block content
             .review-button
                 button.review-prev Föregående
                 button.review-next Nästa
+        .blur
             script(type="module" src="../static/reviews.js")
-    
+

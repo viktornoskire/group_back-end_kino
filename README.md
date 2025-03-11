@@ -70,6 +70,35 @@ Down below we go through our API.
   }
   ```
 
+### Login
+- **URL**: /api/login
+- **Method**: POST
+- **Description**: User sends username and password and the resource checks if they are authorized
+- **Response**: JSON-object with boolean and a token
+- **Status code 200**: Ok
+- **Status code 401**: 'Not authorized'
+- **Example Response**:
+  ```
+  {
+    ok: true,
+    token: jwt,
+  }
+  ```
+
+### Send review
+- **URL**: /api/reviews
+- **Method**: GET
+- **Description**: Uses the token from /api/login to check if they are authorized
+- **Response**: JSON-object with boolean and message
+- **Status code 200**: Ok
+- **Status code 401**: 'Not authorized'
+- **Example Response**:
+  ```
+  {
+    ok: false,
+    error: 'not allowed',
+  }
+  ```
 ## Screenings ID
 - **URL**: /api/screenings/:ID
 - **Method**: GET

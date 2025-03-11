@@ -7,6 +7,7 @@ import { getMovieRating } from './rating.js';
 import cmsAdapterRating from './cmsAdapterRating.js';
 import cmsAdapter from './cmsAdapterTop5Movies.js';
 import cmsReviews from '../static/cmsReviews.js';
+import { reviewAdapter } from './sendReviews.js';
 
 export default function initialize(api) {
   const app = express();
@@ -52,7 +53,7 @@ export default function initialize(api) {
       console.error(err.message);
       res.status(404).render('404', { data: createData() });
     }
-  });
+   });
 
   app.get('/api/reviews/:id/:page', async (req, res) => {
     const id = req.params.id;
@@ -103,7 +104,6 @@ export default function initialize(api) {
       const movieID = req.params.id;
       const screenings = await cmsScreening.loadScreeningsID(req, res);
       const rating = await getMovieRating(cmsAdapterRating, movieID);
-      console.log(rating);
 
       if (!screenings) {
         throw new Error('Array does not contain any screenings.');
@@ -117,6 +117,14 @@ export default function initialize(api) {
       console.error(`Problems with fetching the screenings, ${e}`);
       res.status(500).json({ message: 'Could not fetch any screenings' });
     }
+  });
+
+  app.post("/api/login", (req, res) => {
+    reviewAdapter.loadLogin(req, res);
+  });
+
+  app.get('/api/reviews', (req, res) => {
+    reviewAdapter.sendReviewAccess(req, res);
   });
 
   app.use('/static', express.static('./static'));
