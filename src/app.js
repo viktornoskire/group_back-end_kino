@@ -59,6 +59,10 @@ export default function initialize(api) {
     res.render('register');
   });
 
+  app.get('/login', async (req, res) => {
+    res.render('login');
+  });
+
   app.get('/api/reviews/:id/:page', async (req, res) => {
     const id = req.params.id;
     const page = req.params.page || 1;
