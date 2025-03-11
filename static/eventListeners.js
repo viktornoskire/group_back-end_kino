@@ -131,6 +131,22 @@ if (document.querySelector('.movie-title')) {
 
 // ____ Sign up _____
 
+const signup = document.querySelector('#signup-modal');
+const overlay = document.querySelector('.overlay-blur');
+
+document.querySelector('#loginButton').addEventListener('click', () => {
+  signup.classList.remove('hidden');
+  signup.classList.add('flex');
+  overlay.classList.add('active');
+
+});
+
+document.querySelector('#cancel-signup').addEventListener('click', () => {
+  signup.classList.remove('flex');
+  signup.classList.add('hidden');
+  overlay.classList.remove('active');
+});
+
 // Function to decapitalize the name and capitalize only the first letter
 function capitalize(name) {
   return String(name[0]).toUpperCase() + String(name).slice(1).toLowerCase();
@@ -265,7 +281,7 @@ suForm.addEventListener('submit', (e) => {
   else {
     return;
   }
-  
+
   allStrengths.forEach((bar) => (bar.style.backgroundColor = '#a8a8a8'));
   document.querySelectorAll('input').forEach((box) => (box.value = ''));
 });

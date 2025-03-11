@@ -22,6 +22,7 @@ html(lang="en")
                             each link in data.header.hamburgerMenu.menuLinks 
                                 li
                                     a(href=link.link)= link.text
+                        button(id="loginButton" class="bg-red-900 rounded-2xl font-semibold w-25 hover:bg-red-700") Logga in
                         button.hamburger-btn
                             i(class="fas fa-bars")
                 .menu-overlay(style="display: none")
@@ -35,6 +36,48 @@ html(lang="en")
                                     a(href=link.link)= link.text
                 .overlay-blur
         block content
+        div(class="z-998")
+            div(id="signup-modal" class="z-999 bg-neutral-800 text-white p-8 rounded-xl w-100 shadow-lg fixed flex-col top-2 bottom-2 right-2 left-2 ml-auto mr-auto overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 hidden")
+                div(class="flex justify-center mb-6")
+                    img(src="/movies/img/Kino - koncept.png" alt="KINO Logo" class="h-18")
+
+                h2(class="text-2xl font-bold mb-2") Bli medlem
+                p(class="text-sm text-neutral-400 mb-6") Fyll i din e-post och lösenord, klicka sedan på skicka verifieringskod.
+
+                form(action="" class="signup-form")
+                    label(for="su-fname" class="block font-semibold mb-1") Förnamn
+                    input(type="text" id="su-fname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 border-2 border-s-gray-300")
+                    p#fname-error(class="hidden") Ange förnamn
+
+                    label(for="su-lname" class="block font-semibold mb-1") Efternamn
+                    input(type="text" id="su-lname" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 border-2 border-s-gray-300")
+                    p#lname-error(class="hidden") Ange efternamn
+
+                    label(for="su-username" class="block font-semibold mb-1") Användarnamn
+                    input(type="text" id="su-username" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 border-2 border-s-gray-300")
+                    p#username-error(class="hidden") Ange användarnamn
+
+                    label(for="su-mail" class="block font-semibold mb-1") E-postadress
+                    input(type="mail" id="su-mail" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 border-2 border-s-gray-300")
+                    p#mail-error(class="hidden") Ange korrekt E-postadress
+
+                    label(for="su-password" class="block font-semibold mb-1") Lösenord
+                    input(type="password" id="su-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 border-2 border-s-gray-300")
+                    #password-strength(class="flex w-auto h-1")
+                        #not-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                        #kinda-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                        #strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                        #very-strong(class="w-1/4 ml-1 mr-1 bg-gray-400")
+                    b(class="text-xs text-gray-400 block justify-self-end m-2")#strength-message Inget lösenord
+                    p#password-error(class="hidden") Ange ett lösenord
+
+                    label(for="su-c-password" class="block font-semibold mb-1") Bekräfta lösenord
+                    input(type="password" id="su-c-password" class="w-full p-3 bg-neutral-900 rounded-lg text-white mb-4 outline-none focus:ring-2 focus:ring-red-500")
+                    p#c-password-error(class="hidden") Lösenorden matchar ej
+
+                    button(type="submit" class="w-full bg-red-500 text-white p-3 rounded-3xl text-lg font-semibold hover:bg-red-600 transition") Skapa konto
+
+                p(class="text-gray-400 hover:text-white text-sm hover:cursor-pointer mt-5 ml-auto mr-auto")#cancel-signup Avbryt
         footer.footer-container
             .sections-container
                 - const contact = data.footer.sections[0]
