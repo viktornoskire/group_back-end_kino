@@ -304,3 +304,46 @@ document.querySelector('#cancel-btn').addEventListener('click', () => {
   login.classList.add('hidden');
   overlay.classList.remove('active');
 });
+
+const liForm = document.querySelector('#login-form');
+
+liForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const liError = liForm.querySelector('#error-message');
+  const liMail = liForm.querySelector('#email').value.toLowerCase().trim();
+  const liPass = liForm.querySelector('#password').value.trim();
+
+  const correctPass = (user) => user.password === liPass;
+  const correctMail = (user) => user.mail === liMail;
+
+  const indexOfCorrectPass = users.some((user) => user.password === liPass) ? users.findIndex(correctPass) : false;
+  const indexOfCorrectMail = users.some((user) => user.mail === liMail) ? users.findIndex(correctMail) : false;
+
+  if (!users.some((user) => user.mail === liMail)) {
+    liError.textContent = 'Lösenord eller E-postadress fel';
+    liError.classList.remove('hidden');
+    liError.classList.add('block');
+    return;
+  }
+  if (indexOfCorrectMail === false || indexOfCorrectPass === false) {
+    liError.textContent = 'Lösenord eller E-postadress fel';
+    liError.classList.remove('hidden');
+    liError.classList.add('block');
+    return;
+  }
+  if (indexOfCorrectMail !== indexOfCorrectPass) {
+    liError.textContent = 'Lösenord eller E-postadress fel';
+    liError.classList.remove('hidden');
+    liError.classList.add('block');
+    return;
+  }
+
+  liForm.querySelector('#email').value = '';
+  liForm.querySelector('#password').value = '';
+  liError.textContent = '';
+
+  login.classList.remove('flex');
+  login.classList.add('hidden');
+  overlay.classList.remove('active');
+});
