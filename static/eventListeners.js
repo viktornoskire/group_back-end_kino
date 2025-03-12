@@ -141,6 +141,12 @@ document.querySelector('#cancel-signup').addEventListener('click', () => {
   suForm.querySelectorAll('p').forEach((p) => (p.className = 'hidden'));
 });
 
+overlay.addEventListener('click', () => {
+  overlay.classList.remove('active');
+  signup.classList.remove('flex');
+  signup.classList.add('hidden');
+});
+
 // Function to decapitalize the name and capitalize only the first letter
 function capitalize(name) {
   return String(name[0]).toUpperCase() + String(name).slice(1).toLowerCase();
@@ -242,7 +248,7 @@ suForm.addEventListener('submit', (e) => {
     suForm.querySelector('#mail-error').textContent = 'Ange korrekt E-postadress';
     suForm.querySelector('#mail-error').className = 'block italic justify-self-end';
     passed = false;
-  } else if (users.some((user) => user.mail === em.toLowerCase())) {
+  } else if (users.some((user) => user.email === em.toLowerCase())) {
     suForm.querySelector('#mail-error').textContent = 'E-postadress upptaget';
     suForm.querySelector('#mail-error').className = 'block italic justify-self-end';
     passed = false;
@@ -264,7 +270,7 @@ suForm.addEventListener('submit', (e) => {
       username: un,
       fName: capitalize(fName),
       lName: capitalize(lName),
-      mail: em.toLowerCase(),
+      email: em.toLowerCase(),
       password: pw.value,
     };
     users.push(user);
@@ -280,6 +286,12 @@ suForm.addEventListener('submit', (e) => {
 
     const thanks = suConf.querySelector('#thankyou-message').textContent;
     suConf.querySelector('#thankyou-message').textContent = thanks + ' ' + capitalize(fName) + "!";
+
+    overlay.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      suConf.classList.remove('flex');
+      suConf.classList.add('hidden');
+    });
 
     const gotoLogin = suConf.querySelector('#goto-login');
     gotoLogin.addEventListener('click', () => {
@@ -325,6 +337,12 @@ document.querySelector('#cancel-btn').addEventListener('click', () => {
   overlay.classList.remove('active');
 });
 
+overlay.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  login.classList.remove('flex');
+  login.classList.add('hidden');
+})
+
 const liForm = document.querySelector('#login-form');
 
 liForm.addEventListener('submit', (e) => {
@@ -335,12 +353,12 @@ liForm.addEventListener('submit', (e) => {
   const liPass = liForm.querySelector('#password').value.trim();
 
   const correctPass = (user) => user.password === liPass;
-  const correctMail = (user) => user.mail === liMail;
+  const correctMail = (user) => user.email === liMail;
 
   const indexOfCorrectPass = users.some((user) => user.password === liPass) ? users.findIndex(correctPass) : false;
-  const indexOfCorrectMail = users.some((user) => user.mail === liMail) ? users.findIndex(correctMail) : false;
+  const indexOfCorrectMail = users.some((user) => user.email === liMail) ? users.findIndex(correctMail) : false;
 
-  if (!users.some((user) => user.mail === liMail)) {
+  if (!users.some((user) => user.email === liMail)) {
     liError.textContent = 'Lösenord eller E-postadress fel';
     liError.classList.remove('hidden');
     liError.classList.add('block');
@@ -374,5 +392,11 @@ liForm.addEventListener('submit', (e) => {
     liConf.classList.remove('flex');
     liConf.classList.add('hidden');
     overlay.classList.remove("active");
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    liConf.classList.remove('flex');
+    liConf.classList.add('hidden');
   });
 });
