@@ -9,7 +9,8 @@
     "start": "nodemon index.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose",
     "test-watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "tail:watch": "npx @tailwindcss/cli -i ./static/style.css -o ./static/output.css --watch"
+    "tail:watch": "npx @tailwindcss/cli -i ./static/style.css -o ./static/output.css --watch",
+    "cy:open": "cypress open"
   },
   "lint-staged": {
     "*.html": [
@@ -25,6 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "cypress": "^14.2.0",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
